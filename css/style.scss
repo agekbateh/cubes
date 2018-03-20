@@ -1,0 +1,126 @@
+@charset "utf-8";
+
+@import 'mixins';
+@import 'reset';
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+
+$font-mob: 3.2vw;
+$font-tablet: 1.85vw;
+$font-desktop: 1.5vw;
+$font-desktop-m: 1.2vw;
+$font-desktop-wide: 1.3em;
+
+body {
+    font-family: "Indie Flower", Arial, sans-serif;
+    font-weight:400;
+    font-size:16px;
+    line-height: 1.4;
+    margin: 0;
+    height: 100%;
+}
+
+
+
+.wrapper {
+    max-width: 1920px;
+    margin: auto;
+    .inner-container {
+        padding: 2em 3%;
+        @include box-sizing(border-box);
+    }
+}
+
+.controls {
+    text-align: center;
+
+    .controls__item {
+        position: relative;
+        display: inline-block;
+        width: 3em;
+        height: 3em;
+        line-height: 3em;
+        text-align: center;
+
+        label {
+            input[type="radio"] {
+                position: absolute;
+                opacity: 0;
+            }
+
+            span {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                font-size: 2em;
+                font-weight: 600;
+                border: 1px solid white;
+                @include box-sizing(border-box);
+                @include transition(border-color, 0.2s)
+            }
+
+            #one:checked + span {
+                border: 1px solid yellowgreen;
+                background-color: yellowgreen;
+            }
+            #three:checked + span {
+                border: 1px solid yellow;
+                background-color: yellow;
+            }
+        }
+    }
+}
+
+
+.grid {
+    display: table;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    border-collapse: collapse;
+
+    &-row {
+        display: table-row;
+
+        .grid-row__cell {
+            display: table-cell;
+            position: relative;
+            width: calc(100% / 6);
+            border: 1px solid black;
+            background-color: white;
+            text-align: center;
+            @include box-sizing(border-box);
+            @include transition(background-color, 0.2s);
+            &:before {
+                content: '';
+                display: block;
+                padding-top: 100%;
+            }
+            &:hover {
+                background-color: darken(white , 5%) ;
+            }
+            &.yellow {
+                background-color: yellow;
+            }
+            &.green {
+                background-color: yellowgreen;
+            }
+
+            .placeholder {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                font-size: 2em;
+                @include transform(translate(-50%, -50%))
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
